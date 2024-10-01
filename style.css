@@ -1,27 +1,108 @@
-.container {
-    margin: 128px auto;
-    height: fit-content;
-    max-width: fit-content;
-    background-color: rgb(212, 216, 221);
+@property --hover-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: rgb(70, 160, 225);
 }
 
 
-table,
-tr,
+@property --accent-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: rgb(50, 120, 185);
+}
+
+
+@property --clicked-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: rgb(10, 80, 145);
+}
+
+
+@property --fadded-color {
+    syntax: "<color>";
+    inherits: false;
+    initial-value: rgb(10, 90, 145, 0.2);
+}
+
+
+
+/* ----------------------- */
+
+
+
+html {
+    font: 14pt system-ui, 'Helvetica', 'Arial';
+}
+
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-color: rgb(228, 228, 228);
+}
+
+
+header nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 80px;
+    background-color: rgb(241, 241, 241);
+
+    & p, button {
+        font-weight: bold;
+    }
+}
+
+
+nav button {
+    height: 36px;
+    width: 128px;
+    background-color: var(--accent-color);
+    color: whitesmoke;
+    border: 0;
+    border-radius: 16px;
+
+
+    &:hover {
+        background-color: var(--hover-color);
+    }
+
+
+    &:active {
+        background-color: var(--clicked-color);
+    }
+}
+
+
+main {
+    background-color: rgb(235, 239, 241);
+    margin: 48px auto;
+    width: 1000px;
+}
+
+
+table, tbody {
+    width: 1000px;
+    box-shadow: 0 6px 8px 1px rgba(0, 0, 0, 0.185);
+    border-collapse: collapse;
+}
+
+
 th,
 td {
-    border-collapse: collapse;
+    padding: 12px 16px;
     text-align: center;
-    padding: 8px 16px;
 }
 
 
-th {
-    background-color: rgb(176, 181, 185);
+td {
+    border-top: 2px solid var(--fadded-color);
 }
 
 
-tr td:nth-child(1) {
-    width: fit-content;
+td:nth-child(1) {
     text-align: left;
 }
