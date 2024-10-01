@@ -1,0 +1,27 @@
+.container {
+    margin: 128px auto;
+    height: fit-content;
+    max-width: fit-content;
+    background-color: rgb(212, 216, 221);
+}
+
+
+table,
+tr,
+th,
+td {
+    border-collapse: collapse;
+    text-align: center;
+    padding: 8px 16px;
+}
+
+
+th {
+    background-color: rgb(176, 181, 185);
+}
+
+
+tr td:nth-child(1) {
+    width: fit-content;
+    text-align: left;
+}
