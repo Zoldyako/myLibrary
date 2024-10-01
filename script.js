@@ -1,6 +1,8 @@
-const tbody = document.querySelector('tbody');
-const newBook = document.querySelector('button');
 const myLibrary = [];
+const tbody     = document.querySelector('tbody');
+const newBook   = document.querySelector('button');
+const bookForm  = document.querySelector('.bookForm');
+const dialog    = document.querySelector('dialog');
 
 
 function Book(title, author, pages, read) {
@@ -16,9 +18,9 @@ Book.prototype.bookInfo = function () {
 
 
 function addBookToLibrary(title, author, pages, read) {
-
+    
     myLibrary.push(new Book(title, author, pages, read));
-    displayBook();
+    displayBook()
 }
 
 
@@ -40,9 +42,23 @@ function displayBook() {
 }
 
 
-newBook.addEventListener('mousedown', () => { 
-    addBookToLibrary('The Great Gatsby', 'F. Scott Fitzgerald', 180, 'Unread'); 
+newBook.addEventListener('mousedown', () => { dialog.show(); });
+
+bookForm.addEventListener('submit', event => {
+
+    event.preventDefault();
+
+    const title = document.querySelector('#title').value;
+    const author = document.querySelector('#author').value;
+    const pages = document.querySelector('#pages').value;
+    const read = document.querySelector('input[name="read"]:checked').value;
+
+    addBookToLibrary(title, author, pages, read);
+
+    bookForm.reset();
+    dialog.close();
 });
+
 
 
 let lordOfTheRings  = new Book('Lord of The Rings', 'J.R.R. Tolkien', 295, 'Reading');
@@ -50,6 +66,5 @@ let lightingThief   = new Book('Percy Jackson and the Lighting Thief', 'Rick Rio
 
 myLibrary[0] = lordOfTheRings;
 myLibrary[1] = lightingThief;
-
 
 displayBook();

@@ -26,9 +26,36 @@
                 </tr>
             </thead>
             <tbody>
-        
             </tbody>
         </table>
     </main>
+    <dialog>
+        <h2>Add a new book</h2>
+        <form class="bookForm" method="dialog">
+            <div>
+                <label for="title">Title</label><br>
+                <input type="text" name="title" id="title">
+            </div>
+            <div>
+                <label for="author">Author</label><br>
+                <input type="text" name="author" id="author">
+            </div>
+            <div>
+                <label for="pages">Number of Pages</label><br>
+                <input type="number" name="pages" id="pages" min="1">
+            </div>
+            <div>
+                <p>Reading Status</p>
+                <input type="radio" name="read" id="unread" value="Unread">
+                <label for="unread">Unread</label>
+                <input type="radio" name="read" id="reading" value="Reading">
+                <label for="reading">Reading</label>
+                <input type="radio" name="read" id="read" value="Read">
+                <label for="read">Read</label>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
 </body>
 </html>

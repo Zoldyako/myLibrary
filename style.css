@@ -106,3 +106,32 @@ td {
 td:nth-child(1) {
     text-align: left;
 }
+
+
+dialog {
+    position: absolute;
+    text-align: center;
+    top: 20vh;
+    width: clamp(350px, 25vw, 600px);
+    background-color: rgb(241, 243, 245);
+    box-shadow: 0 0 32px rgb(148, 148, 148);
+    border-radius: 16px;
+    border: none;
+}
+
+
+form div {
+    margin: 8px;
+}
+
+input {
+    margin-top: 8px;
+}
+
+
+form button {
+    margin: 16px;
+    font-size: 14pt;
+    width: 150px;
+    height: 48px;
+}
