@@ -37,6 +37,18 @@ function displayBook() {
             tr.appendChild(td);
         });
 
+        let td = document.createElement('td');
+        let deleteBook = document.createElement('button');
+
+        deleteBook.addEventListener('click', () => {
+            tr.remove();
+        });
+
+        deleteBook.innerText = 'Delete';
+
+        td.appendChild(deleteBook);
+        tr.appendChild(td);
+        
         tbody.appendChild(tr);
     }); 
 }
