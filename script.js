@@ -27,7 +27,7 @@ function addBookToLibrary(title, author, pages, read) {
 function displayBook() {
     tbody.innerHTML = '';
     
-    myLibrary.forEach(book => {
+    myLibrary.forEach((book, index) => {
         let tr = document.createElement('tr');
 
         ['title', 'author', 'pages', 'read'].forEach(key => {
@@ -41,13 +41,17 @@ function displayBook() {
         let deleteBook = document.createElement('button');
 
         deleteBook.addEventListener('click', () => {
+            let bookToDelete = tr.dataset.index;
             tr.remove();
+
+            myLibrary.splice(bookToDelete, 1)
         });
 
         deleteBook.innerText = 'Delete';
 
         td.appendChild(deleteBook);
         tr.appendChild(td);
+        tr.dataset.index = index
         
         tbody.appendChild(tr);
     }); 
