@@ -29,7 +29,7 @@
             </tbody>
         </table>
     </main>
-    <dialog>
+    <dialog class="newBook">
         <h2>Add a new book</h2>
         <form class="bookForm" method="dialog">
             <div>
@@ -54,6 +54,22 @@
                 <label for="status">Read</label>
             </div>
 
+            <button type="submit">Submit</button>
+        </form>
+    </dialog>
+
+    <dialog class="edit">
+        <h2>Change Reading Status</h2>
+        <form id="editForm" method="dialog">
+            <div>
+                <p>Reading Status:</p>
+                <input type="radio" name="editStatus" id="editUnread" value="Unread">
+                <label for="unread">Unread</label>
+                <input type="radio" name="editStatus" id="editReading" value="Reading">
+                <label for="reading">Reading</label>
+                <input type="radio" name="editStatus" id="editRead" value="Read">
+                <label for="status">Read</label>
+            </div>
             <button type="submit">Submit</button>
         </form>
     </dialog>
