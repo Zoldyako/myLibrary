@@ -111,7 +111,6 @@ td:nth-child(1) {
 dialog {
     position: absolute;
     text-align: center;
-    top: 20vh;
     width: clamp(350px, 25vw, 600px);
     background-color: rgb(241, 243, 245);
     box-shadow: 0 0 32px rgb(148, 148, 148);
