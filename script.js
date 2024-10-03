@@ -9,7 +9,7 @@ function Book(title, author, pages, status) {
     this.title  = title,
     this.author = author,
     this.pages  = pages,
-    this.status   = status;    
+    this.status = status;    
 }
 
 Book.prototype.bookInfo = function() {
@@ -17,11 +17,11 @@ Book.prototype.bookInfo = function() {
 }
 
 Book.prototype.changeStatus = function(status) {
-    return this.read = status;
+    return this.status = status;
 }
 
-Book.prototype.addBook = function(title, author, pages, read) {
-    myLibrary.push(new Book(title, author, pages, read));
+Book.prototype.addBook = function(title, author, pages, status) {
+    myLibrary.push(new Book(title, author, pages, status));
 }
 
 Book.prototype.deletBook = function() {
@@ -70,7 +70,7 @@ function displayBook() {
     myLibrary.forEach((book, index) => {
         let tr = document.createElement('tr');
 
-        ['title', 'author', 'pages', 'read'].forEach(key => {
+        ['title', 'author', 'pages', 'status'].forEach(key => {
             let td = document.createElement('td');
 
             td.innerText = book[key];
@@ -100,9 +100,9 @@ bookForm.addEventListener('submit', event => {
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const pages = document.querySelector('#pages').value;
-    const read = document.querySelector('input[name="read"]:checked').value;
+    const status = document.querySelector('input[name="status"]:checked').value;
 
-    addBookToLibrary(title, author, pages, read);
+    addBookToLibrary(title, author, pages, status);
 
     bookForm.reset();
     dialog.close();
