@@ -20,12 +20,12 @@ Book.prototype.changeStatus = function(status) {
     return this.status = status;
 }
 
-Book.prototype.addBook = function(title, author, pages, status) {
+function addBook(title, author, pages, status) {
     myLibrary.push(new Book(title, author, pages, status));
+    displayBooks();
 }
 
-Book.prototype.deletBook = function() {
-    const index = myLibrary.indexOf(this);
+function deletBook(index) {
     myLibrary.splice(index, 1);
 }
 
@@ -36,7 +36,7 @@ function createDeletBtn(tr, index) {
 
     deletBtn.addEventListener('click', () => {
         let book = myLibrary[index];
-        book.deletBook();
+        deletBook(index);
         tr.remove();
     });
 
@@ -60,11 +60,11 @@ function createReadStatusBtn(tr, index, status) {
 
 function changeReadStatus(book, status) {
     book.bookStatus = status;
-    displayBook();
+    displayBooks();
 }
 
 
-function displayBook() {
+function displayBooks() {
     tbody.innerHTML = '';
     
     myLibrary.forEach((book, index) => {
@@ -102,7 +102,7 @@ bookForm.addEventListener('submit', event => {
     const pages = document.querySelector('#pages').value;
     const status = document.querySelector('input[name="status"]:checked').value;
 
-    addBookToLibrary(title, author, pages, status);
+    addBook(title, author, pages, status);
 
     bookForm.reset();
     dialog.close();
@@ -116,4 +116,4 @@ let lightingThief   = new Book('Percy Jackson and the Lighting Thief', 'Rick Rio
 myLibrary[0] = lordOfTheRings;
 myLibrary[1] = lightingThief;
 
-displayBook();
+displayBooks();
