@@ -5,43 +5,38 @@ const bookForm  = document.querySelector('.bookForm');
 const dialog    = document.querySelector('dialog');
 
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, status) {
     this.title  = title,
     this.author = author,
     this.pages  = pages,
-    this.read   = read;    
+    this.status   = status;    
 }
 
-Book.prototype.bookInfo = function () {
-    return `${this.title} by author ${this.author}, has ${this.pages}, ${this.read}`
+Book.prototype.bookInfo = function() {
+    return `${this.title} by author ${this.author}, has ${this.pages}, ${this.status}`
 }
 
-
-Book.prototype.bookStatus = function (status) {
+Book.prototype.changeStatus = function(status) {
     return this.read = status;
 }
 
-
-function addBookToLibrary(title, author, pages, read) {
-    
+Book.prototype.addBook = function(title, author, pages, read) {
     myLibrary.push(new Book(title, author, pages, read));
-    displayBook()
+}
+
+Book.prototype.deletBook = function() {
+    const index = myLibrary.indexOf(this);
+    myLibrary.splice(index, 1);
 }
 
 
-function changeReadStatus(book, status) {
-    book.bookStatus = status;
-    displayBook();
-}
-
-
-function createDeletBtn (tr, index) {
+function createDeletBtn(tr, index) {
     let deletBtn = document.createElement('button');
     deletBtn.innerText = 'Delet';
 
     deletBtn.addEventListener('click', () => {
-        let bookToDelete = tr.dataset.index = index;
-        myLibrary.splice(bookToDelete, 1);
+        let book = myLibrary[index];
+        book.deletBook();
         tr.remove();
     });
 
@@ -49,15 +44,23 @@ function createDeletBtn (tr, index) {
 }
 
 
-function createReadStatusBtn(tr, index) {
+function createReadStatusBtn(tr, index, status) {
     let readStatusBtn = document.createElement('button');
     readStatusBtn.innerText = 'Edit';
 
     readStatusBtn.addEventListener('click', () => {
-        
+        let bookToChange = tr.dataset.index = index;
+        changeReadStatus(bookToChange, status);
+        alert("aa");
     });
 
     return readStatusBtn;
+}
+
+
+function changeReadStatus(book, status) {
+    book.bookStatus = status;
+    displayBook();
 }
 
 
@@ -77,7 +80,7 @@ function displayBook() {
         let td = document.createElement('td');
 
         td.appendChild(createReadStatusBtn(tr, index));
-        td.appendChild(createDeletBtn(tr));
+        td.appendChild(createDeletBtn(tr, index));
         tr.appendChild(td);
 
 
