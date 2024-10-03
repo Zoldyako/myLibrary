@@ -42,7 +42,7 @@ function displayBook() {
 }
 
 
-newBook.addEventListener('mousedown', () => { dialog.show(); });
+newBook.addEventListener('click', () => { dialog.showModal(); });
 
 bookForm.addEventListener('submit', event => {
 
