@@ -17,10 +17,47 @@ Book.prototype.bookInfo = function () {
 }
 
 
+Book.prototype.bookStatus = function (status) {
+    return this.read = status;
+}
+
+
 function addBookToLibrary(title, author, pages, read) {
     
     myLibrary.push(new Book(title, author, pages, read));
     displayBook()
+}
+
+
+function changeReadStatus(book, status) {
+    book.bookStatus = status;
+    displayBook();
+}
+
+
+function createDeletBtn (tr, index) {
+    let deletBtn = document.createElement('button');
+    deletBtn.innerText = 'Delet';
+
+    deletBtn.addEventListener('click', () => {
+        let bookToDelete = tr.dataset.index = index;
+        myLibrary.splice(bookToDelete, 1);
+        tr.remove();
+    });
+
+    return deletBtn;
+}
+
+
+function createReadStatusBtn(tr, index) {
+    let readStatusBtn = document.createElement('button');
+    readStatusBtn.innerText = 'Edit';
+
+    readStatusBtn.addEventListener('click', () => {
+        
+    });
+
+    return readStatusBtn;
 }
 
 
@@ -38,19 +75,12 @@ function displayBook() {
         });
 
         let td = document.createElement('td');
-        let deleteBook = document.createElement('button');
 
-        deleteBook.addEventListener('click', () => {
-            let bookToDelete = tr.dataset.index;
-            tr.remove();
-
-            myLibrary.splice(bookToDelete, 1)
-        });
-
-        deleteBook.innerText = 'Delete';
-
-        td.appendChild(deleteBook);
+        td.appendChild(createReadStatusBtn(tr, index));
+        td.appendChild(createDeletBtn(tr));
         tr.appendChild(td);
+
+
         tr.dataset.index = index
         
         tbody.appendChild(tr);
